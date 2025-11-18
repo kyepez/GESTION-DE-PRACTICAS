@@ -1,0 +1,49 @@
+[debug] [2025-11-17T07:06:42.119Z] ----------------------------------------------------------------------
+[debug] [2025-11-17T07:06:42.127Z] Command:       C:\Program Files\nodejs\node.exe C:\Program Files\nodejs\node_modules\firebase-tools\lib\bin\firebase.js deploy --only hosting
+[debug] [2025-11-17T07:06:42.128Z] CLI Version:   14.25.0
+[debug] [2025-11-17T07:06:42.128Z] Platform:      win32
+[debug] [2025-11-17T07:06:42.128Z] Node Version:  v20.19.0
+[debug] [2025-11-17T07:06:42.129Z] Time:          Mon Nov 17 2025 02:06:42 GMT-0500 (hora estándar de Colombia)
+[debug] [2025-11-17T07:06:42.129Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2025-11-17T07:06:42.545Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2025-11-17T07:06:42.546Z] > authorizing via signed-in user (kyepez403@gmail.com)
+[debug] [2025-11-17T07:06:42.546Z] [iam] checking project gestion-de-practicas-9b116 for permissions ["firebase.projects.get","firebasehosting.sites.update"]
+[debug] [2025-11-17T07:06:42.548Z] Checked if tokens are valid: true, expires at: 1763366194912
+[debug] [2025-11-17T07:06:42.548Z] Checked if tokens are valid: true, expires at: 1763366194912
+[debug] [2025-11-17T07:06:42.550Z] >>> [apiv2][query] POST https://cloudresourcemanager.googleapis.com/v1/projects/gestion-de-practicas-9b116:testIamPermissions [none]
+[debug] [2025-11-17T07:06:42.550Z] >>> [apiv2][(partial)header] POST https://cloudresourcemanager.googleapis.com/v1/projects/gestion-de-practicas-9b116:testIamPermissions x-goog-quota-user=projects/gestion-de-practicas-9b116
+[debug] [2025-11-17T07:06:42.551Z] >>> [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/gestion-de-practicas-9b116:testIamPermissions {"permissions":["firebase.projects.get","firebasehosting.sites.update"]}
+[debug] [2025-11-17T07:06:43.181Z] <<< [apiv2][status] POST https://cloudresourcemanager.googleapis.com/v1/projects/gestion-de-practicas-9b116:testIamPermissions 200
+[debug] [2025-11-17T07:06:43.181Z] <<< [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/gestion-de-practicas-9b116:testIamPermissions {"permissions":["firebase.projects.get","firebasehosting.sites.update"]}
+[debug] [2025-11-17T07:06:43.182Z] Checked if tokens are valid: true, expires at: 1763366194912
+[debug] [2025-11-17T07:06:43.182Z] Checked if tokens are valid: true, expires at: 1763366194912
+[debug] [2025-11-17T07:06:43.183Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/gestion-de-practicas-9b116 [none]
+[debug] [2025-11-17T07:06:43.598Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/gestion-de-practicas-9b116 200
+[debug] [2025-11-17T07:06:43.598Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/gestion-de-practicas-9b116 {"projectId":"gestion-de-practicas-9b116","projectNumber":"1014685722476","displayName":"gestion de practicas","name":"projects/gestion-de-practicas-9b116","resources":{"hostingSite":"gestion-de-practicas-9b116"},"state":"ACTIVE","etag":"1_bfcfd7df-78be-4770-8de2-dca367e8a2a2"}
+[info] 
+[info] === Deploying to 'gestion-de-practicas-9b116'...
+[info] 
+[info] i  deploying hosting 
+[debug] [2025-11-17T07:06:43.608Z] Checked if tokens are valid: true, expires at: 1763366194912
+[debug] [2025-11-17T07:06:43.609Z] Checked if tokens are valid: true, expires at: 1763366194912
+[debug] [2025-11-17T07:06:43.609Z] >>> [apiv2][query] POST https://firebasehosting.googleapis.com/v1beta1/projects/-/sites/gestion-de-practicas-9b116/versions [none]
+[debug] [2025-11-17T07:06:43.609Z] >>> [apiv2][body] POST https://firebasehosting.googleapis.com/v1beta1/projects/-/sites/gestion-de-practicas-9b116/versions {"status":"CREATED","labels":{"deployment-tool":"cli-firebase"}}
+[debug] [2025-11-17T07:06:44.588Z] <<< [apiv2][status] POST https://firebasehosting.googleapis.com/v1beta1/projects/-/sites/gestion-de-practicas-9b116/versions 200
+[debug] [2025-11-17T07:06:44.588Z] <<< [apiv2][body] POST https://firebasehosting.googleapis.com/v1beta1/projects/-/sites/gestion-de-practicas-9b116/versions {"name":"projects/1014685722476/sites/gestion-de-practicas-9b116/versions/638eccc477de9e1a","status":"CREATED","config":{},"labels":{"deployment-tool":"cli-firebase"}}
+[info] i  hosting[gestion-de-practicas-9b116]: beginning deploy... 
+[info] i  hosting[gestion-de-practicas-9b116]: found 127132 files in . 
+[debug] [2025-11-17T07:07:21.545Z] [hosting] uploading with 200 concurrency
+[debug] [2025-11-17T07:07:21.547Z] [hosting] hash cache [] not populated
+[debug] [2025-11-17T07:07:21.644Z] Error: EBUSY: resource busy or locked, open 'C:\Users\yepez\ntuser.dat.LOG2'
+[error] 
+[error] Error: An unexpected error has occurred.
+[debug] [2025-11-17T07:07:21.646Z] Error: EBUSY: resource busy or locked, open 'C:\Users\yepez\ntuser.dat.LOG1'
+[error] 
+[error] Error: An unexpected error has occurred.
+[debug] [2025-11-17T07:07:21.648Z] Error: EBUSY: resource busy or locked, open 'C:\Users\yepez\NTUSER.DAT'
+[error] 
+[error] Error: An unexpected error has occurred.
+[debug] [2025-11-17T07:07:21.834Z] Error: EISDIR: illegal operation on a directory, read
+[error] 
+[error] Error: An unexpected error has occurred.

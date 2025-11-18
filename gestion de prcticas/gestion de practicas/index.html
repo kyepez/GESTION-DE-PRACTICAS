@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>GestionPrácticas | Conecta estudiantes, empresas y supervisores</title>
+  <meta name="description" content="Plataforma para gestionar prácticas profesionales: ofertas reales, aplicaciones fáciles y seguimiento completo." />
+
+  <!-- Google Fonts - Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Favicon -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>⚙️</text></svg>">
+
+  <!-- Estilos -->
+  <link rel="stylesheet" href="assets/assets.css" />
+  <style>
+    /* Estilos críticos inline para asegurar que se vean */
+    body { 
+      margin: 0; 
+      padding: 0; 
+      font-family: 'Inter', system-ui, sans-serif;
+      background: linear-gradient(135deg, #f5f7fb 0%, #e8f0f8 100%);
+      min-height: 100vh;
+    }
+    .hero { 
+      min-height: 100vh; 
+      display: flex; 
+      align-items: center;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+      color: white;
+      padding: 8rem 0 6rem;
+      text-align: center;
+      position: relative;
+    }
+    .container {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+      width: 100%;
+    }
+    /* Mensaje si no hay servidor */
+    .no-server-warning {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      background: #ef4444;
+      color: white;
+      padding: 1rem;
+      text-align: center;
+      z-index: 10000;
+      font-weight: 600;
+    }
+  </style>
+</head>
+<body>
+  <div class="no-server-warning" id="serverWarning">
+    ⚠️ Este proyecto requiere un servidor local. Usa Firebase Hosting, Python http.server, o Live Server de VS Code.
+  </div>
+  <header class="hero">
+    <div class="container hero__content">
+      <h1>
+        Gestion<span>Prácticas</span>
+      </h1>
+      <p class="hero__subtitle">
+        Conecta estudiantes, empresas y supervisores en un solo lugar
+      </p>
+
+      <div class="hero__actions">
+        <button id="btnLogin" class="btn btn--google" type="button" data-google-login>
+          <svg class="btn__icon" viewBox="0 0 24 24" width="20" height="20" fill="currentColor">
+            <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/>
+            <path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/>
+            <path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"/>
+            <path d="M12 6.75c1.63 0 3.06.56 4.21 1.65l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/>
+          </svg>
+          Continuar con Google
+        </button>
+        <a class="btn btn--outline" href="#features">Ver funcionalidades</a>
+      </div>
+    </div>
+  </header>
+
+  <section class="stats" aria-label="Indicadores de la plataforma">
+    <div class="container stats__grid">
+      <article>
+        <p class="stats__value">1.2K+</p>
+        <p class="stats__label">Estudiantes activos</p>
+      </article>
+      <article>
+        <p class="stats__value">180</p>
+        <p class="stats__label">Empresas verificadas</p>
+      </article>
+      <article>
+        <p class="stats__value">920</p>
+        <p class="stats__label">Prácticas gestionadas</p>
+      </article>
+    </div>
+  </section>
+
+  <section class="access" id="acceso">
+    <div class="container">
+      <header class="access__header">
+        <p class="eyebrow">Plataforma certificada</p>
+        <h2>Inicia sesión o crea tu cuenta institucional</h2>
+        <p>Selecciona el rol que necesitas y accede al ecosistema completo de gestión de prácticas.</p>
+      </header>
+
+      <div class="access__grid">
+        <article class="access-card">
+          <div>
+            <h3>Ingresar a mi cuenta</h3>
+            <p class="text-muted">Estudiantes y supervisores registrados pueden ingresar con su correo institucional.</p>
+          </div>
+          <form id="loginForm" class="form" autocomplete="on">
+            <label class="form-group">
+              <span>Correo institucional</span>
+              <input id="loginEmail" name="email" type="email" class="form-control" placeholder="tucorreo@universidad.edu" required />
+            </label>
+            <label class="form-group">
+              <span>Contraseña</span>
+              <input id="loginPassword" name="password" type="password" class="form-control" placeholder="••••••••" minlength="6" required />
+            </label>
+            <div class="form-actions">
+              <button type="submit" class="btn btn--primary" id="btnEmailLogin">Entrar</button>
+              <button type="button" class="btn btn--ghost" data-google-login>Continuar con Google</button>
+            </div>
+            <button type="button" id="btnForgotPassword" class="link">¿Olvidaste tu contraseña?</button>
+          </form>
+        </article>
+
+        <article class="access-card">
+          <div>
+            <h3>Crear cuenta nueva</h3>
+            <p class="text-muted">Solicita acceso como estudiante, supervisor empresarial o coordinador académico.</p>
+          </div>
+          <form id="registerForm" class="form" autocomplete="on">
+            <label class="form-group">
+              <span>Nombre completo</span>
+              <input id="registerName" name="name" type="text" class="form-control" placeholder="Nombre y apellido" required />
+            </label>
+            <label class="form-group">
+              <span>Correo institucional</span>
+              <input id="registerEmail" name="email" type="email" class="form-control" placeholder="tucorreo@universidad.edu" required />
+            </label>
+            <label class="form-group">
+              <span>Contraseña</span>
+              <input id="registerPassword" name="password" type="password" class="form-control" placeholder="Mínimo 8 caracteres" minlength="8" required />
+            </label>
+            <label class="form-group">
+              <span>Rol dentro de la plataforma</span>
+              <select id="registerRole" name="role" class="form-control" required>
+                <option value="estudiante">Estudiante</option>
+                <option value="supervisor_empresa">Supervisor de empresa</option>
+                <option value="administrador">Coordinación académica</option>
+              </select>
+            </label>
+            <div class="form-actions">
+              <button type="submit" class="btn btn--primary" id="btnRegister">Crear cuenta</button>
+              <button type="button" class="btn btn--outline" data-google-login>Registrarme con Google</button>
+            </div>
+          </form>
+        </article>
+      </div>
+
+      <p id="authStatus" class="form-status" role="status" aria-live="polite"></p>
+    </div>
+  </section>
+
+  <main class="features" id="features">
+    <div class="container">
+      <div class="features__grid">
+        <article class="feature-card">
+          <div class="feature-card__icon">📋</div>
+          <h3>Ofertas Reales</h3>
+          <p>Empresas verificadas publican oportunidades de práctica reales y actualizadas.</p>
+        </article>
+
+        <article class="feature-card">
+          <div class="feature-card__icon">🚀</div>
+          <h3>Aplicaciones Fáciles</h3>
+          <p>Aplica con un solo clic y sube tu hoja de vida o carta de presentación.</p>
+        </article>
+
+        <article class="feature-card">
+          <div class="feature-card__icon">📊</div>
+          <h3>Seguimiento Completo</h3>
+          <p>Entrega informes semanales, recibe evaluaciones y lleva el control total de tu práctica.</p>
+        </article>
+      </div>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <p>© 2025 GestionPrácticas. Todos los derechos reservados.</p>
+    </div>
+  </footer>
+
+  <script type="module">
+    console.log("📄 index.html cargado");
+    
+    // Detectar si se está usando file://
+    if (window.location.protocol === 'file:') {
+      document.getElementById('serverWarning').style.display = 'block';
+      console.error("❌ No se puede usar file://. Necesitas un servidor local.");
+    }
+    
+    // Cargar módulo de autenticación
+    import('./js/auth.js').catch(err => {
+      console.error("❌ Error cargando auth.js:", err);
+      const warning = document.getElementById('serverWarning');
+      warning.style.display = 'block';
+      warning.textContent = '❌ Error cargando módulos. Verifica que estés usando un servidor local y que todos los archivos estén en su lugar.';
+      warning.style.background = '#dc2626';
+    });
+  </script>
+</body>
+</html>

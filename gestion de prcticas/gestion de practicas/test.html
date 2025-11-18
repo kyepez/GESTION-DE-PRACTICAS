@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Test - GestionPrácticas</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 2rem;
+      background: #f5f5f5;
+    }
+    .test-item {
+      background: white;
+      padding: 1rem;
+      margin: 1rem 0;
+      border-radius: 8px;
+      border-left: 4px solid #667eea;
+    }
+    .success { border-left-color: #22c55e; }
+    .error { border-left-color: #ef4444; }
+  </style>
+</head>
+<body>
+  <h1>Verificación de Archivos</h1>
+  <div id="results"></div>
+  
+  <script>
+    const files = [
+      'assets/assets.css',
+      'assets/dashboard.css',
+      'js/firebase-config.js',
+      'js/auth.js',
+      'js/dashboard.js',
+      'index.html',
+      'dashboard.html'
+    ];
+    
+    const results = document.getElementById('results');
+    
+    files.forEach(file => {
+      fetch(file)
+        .then(res => {
+          const div = document.createElement('div');
+          div.className = `test-item ${res.ok ? 'success' : 'error'}`;
+          div.innerHTML = `<strong>${file}</strong>: ${res.ok ? '✓ Encontrado' : '✗ No encontrado'}`;
+          results.appendChild(div);
+        })
+        .catch(err => {
+          const div = document.createElement('div');
+          div.className = 'test-item error';
+          div.innerHTML = `<strong>${file}</strong>: ✗ Error - ${err.message}`;
+          results.appendChild(div);
+        });
+    });
+  </script>
+</body>
+</html>
+

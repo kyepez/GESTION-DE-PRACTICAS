@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Dashboard | GestionPrácticas</title>
+  <meta name="description" content="Panel de control - GestionPrácticas" />
+
+  <link rel="stylesheet" href="assets/dashboard.css">
+
+  <!-- Iconos Lucide -->
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+</head>
+<body>
+
+  <!-- TOPBAR -->
+  <header class="topbar">
+    <div style="display:flex; align-items:center; gap:1rem;">
+      <button id="sidebarToggle" class="icon-button" aria-label="Abrir menú">
+        <i data-lucide="menu"></i>
+      </button>
+      <div class="topbar__logo">GestionPrácticas</div>
+    </div>
+
+    <div class="topbar__right">
+      <button id="themeToggle" class="icon-button" aria-label="Cambiar tema">
+        <i data-lucide="moon"></i>
+      </button>
+      <div class="user-menu">
+        <div class="user-avatar">
+          <img id="userPhoto" src="" alt="Foto de perfil" loading="lazy" />
+        </div>
+        <div>
+          <div id="userName" class="user-name">Cargando...</div>
+          <div id="userEmail" class="user-email"></div>
+        </div>
+        <button id="btnLogout" class="icon-button" title="Cerrar sesión" aria-label="Cerrar sesión">
+          <i data-lucide="log-out"></i>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <div class="dashboard-wrapper">
+
+    <!-- SIDEBAR -->
+    <aside id="sidebar" class="sidebar">
+      <nav>
+        <ul id="menuItems">
+          <li class="menu-item skeleton" style="height:52px; margin:0.5rem 1rem; border-radius:0.85rem;"></li>
+          <li class="menu-item skeleton" style="height:52px; margin:0.5rem 1rem; border-radius:0.85rem;"></li>
+          <li class="menu-item skeleton" style="height:52px; margin:0.5rem 1rem; border-radius:0.85rem;"></li>
+        </ul>
+      </nav>
+    </aside>
+
+    <!-- MAIN -->
+    <main id="mainContent" class="main-content">
+      <div class="content-header">
+        <h2 id="pageTitle">Bienvenid@</h2>
+        <p id="pageSubtitle" class="text-muted">Selecciona una opción del menú lateral</p>
+        <span id="roleBadge" class="badge" hidden></span>
+      </div>
+
+      <section id="summaryGrid" class="grid grid--stats" hidden></section>
+
+      <section id="dynamicPanels" class="grid" hidden></section>
+
+      <section id="timelinePanel" class="card panel" hidden>
+        <div class="panel__header">
+          <h3>Actividad reciente</h3>
+          <p class="text-muted">Actualizada en tiempo real</p>
+        </div>
+        <div class="panel__content">
+          <ul id="timelineList" class="timeline"></ul>
+        </div>
+      </section>
+
+      <section id="emptyState" class="card" hidden>
+        <h3>No hay datos aún</h3>
+        <p class="text-muted">Comienza creando tu primera práctica o completa tu perfil.</p>
+        <button class="cta" type="button">
+          <span>Completar perfil</span>
+          <i data-lucide="arrow-right"></i>
+        </button>
+      </section>
+
+      <div class="loader" id="pageLoader">
+        <div class="spinner"></div>
+        <p>Cargando tu dashboard...</p>
+      </div>
+    </main>
+  </div>
+
+  <script type="module" src="js/dashboard.js"></script>
+</body>
+</html>
